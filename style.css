@@ -261,5 +261,29 @@ h1 span {
   *::after {
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
-  }
+  }.square {
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  cursor: pointer;
+  font-family: serif;
+}
+
+.square.legal-move {
+  box-shadow: inset 0 0 0 4px #b5f36b;
+}
+
+.square.selected {
+  box-shadow: inset 0 0 0 4px #f4d35e;
+}
+
+#game-status {
+  text-align: center;
+  margin-top: 16px;
+}
 }
