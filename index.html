@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101310">
+  <meta name="description" content="Chessington — your next chess match starts here.">
+  <title>Chessington — Play Chess</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#" aria-label="Chessington home">
+      <span class="brand-icon">♞</span>
+      <span>Chessington</span>
+    </a>
+    <span class="header-label">YOUR NEXT MOVE</span>
+  </header>
+
+  <main class="hero">
+    <section class="hero-content">
+      <p class="eyebrow">A NEW GAME AWAITS</p>
+      <h1>Think ahead.<br><span>Play boldly.</span></h1>
+      <p class="hero-description">
+        Sharpen your strategy, challenge the computer,
+        and make every move count.
+      </p>
+      <button class="play-button" id="play-button">
+        <span>♟</span> Play chess <span class="arrow">→</span>
+      </button>
+      <p class="hero-note">FREE TO PLAY · YOUR NEXT MOVE IS YOURS</p>
+    </section>
+
+    <section class="chess-preview" aria-label="Chessboard preview">
+      <div class="board-frame">
+        <div class="board" id="preview-board" aria-hidden="true"></div>
+      </div>
+      <p class="board-caption">EVERY MOVE TELLS A STORY.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>CHESSINGTON</span>
+    <span>MADE FOR THE LOVE OF CHESS ♟</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
