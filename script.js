@@ -138,11 +138,7 @@ function showGameStatus() {
 }
 
 playButton?.addEventListener("click", () => {
-  document.querySelector(".chess-preview")?.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  });
-  showGameStatus();
+  window.location.href = "game.html";
 });
 
 renderBoard();
