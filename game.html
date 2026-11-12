@@ -21,8 +21,40 @@
     <a class="home-link" href="index.html">← Home</a>
   </header>
 
-  <main class="game-layout">
+  <div class="app-layout">
 
+  <aside class="mode-sidebar">
+    <a class="sidebar-brand" href="index.html">
+      <span>♞</span> Chessington
+    </a>
+
+    <p class="sidebar-heading">PLAY</p>
+
+    <nav class="mode-navigation">
+      <button class="mode-button" data-mode="online">
+        <span class="mode-icon">🌐</span>
+        <span>Online Play</span>
+        <span class="coming-soon">Soon</span>
+      </button>
+
+      <button class="mode-button active" data-mode="computer">
+        <span class="mode-icon">♟</span>
+        <span>Play Computer</span>
+      </button>
+
+      <button class="mode-button" data-mode="practice">
+        <span class="mode-icon">♙</span>
+        <span>Practice</span>
+      </button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <a href="index.html">← Back to Home</a>
+    </div>
+  </aside>
+
+  <main class="game-layout">
+    
     <section class="board-section">
       <div class="game-heading">
         <p class="eyebrow">YOUR NEXT MOVE</p>
@@ -83,6 +115,7 @@
     </aside>
 
   </main>
+    </div>
 
   <footer class="game-footer">
     <span>CHESSINGTON</span>
