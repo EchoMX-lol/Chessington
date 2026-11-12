@@ -381,3 +381,156 @@ button, select {
   }
 }
 
+/* ===== APP SIDEBAR ===== */
+
+.app-layout {
+  min-height: calc(100vh - 76px);
+  display: flex;
+}
+
+.mode-sidebar {
+  width: 245px;
+  min-width: 245px;
+  min-height: calc(100vh - 76px);
+  padding: 28px 18px;
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 48px;
+}
+
+.sidebar-brand span {
+  color: var(--accent);
+  font-size: 27px;
+}
+
+.sidebar-heading {
+  margin: 0 0 14px 10px;
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+.mode-navigation {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mode-button {
+  width: 100%;
+  min-height: 48px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  border: 1px solid transparent;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  text-align: left;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.mode-button:hover {
+  background: var(--surface-light);
+  color: var(--text);
+}
+
+.mode-button.active {
+  background: #303b2c;
+  border-color: #46583c;
+  color: var(--accent);
+}
+
+.mode-icon {
+  width: 22px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.coming-soon {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.sidebar-bottom {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+.sidebar-bottom a {
+  color: var(--muted);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.sidebar-bottom a:hover {
+  color: var(--accent);
+}
+
+/* ===== GAME AREA ADJUSTMENTS ===== */
+
+.app-layout .game-layout {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 40px;
+  align-self: flex-start;
+}
+
+/* ===== SMALLER SCREENS ===== */
+
+@media (max-width: 850px) {
+  .app-layout .game-layout {
+    width: auto;
+    margin: 0 auto;
+    padding: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .mode-sidebar {
+    width: 175px;
+    min-width: 175px;
+    padding: 20px 10px;
+  }
+
+  .sidebar-brand {
+    font-size: 16px;
+    margin-bottom: 35px;
+  }
+
+  .mode-button {
+    gap: 6px;
+    padding: 0 7px;
+    font-size: 12px;
+  }
+
+  .coming-soon {
+    font-size: 8px;
+  }
+
+  .app-layout .game-layout {
+    padding: 15px 10px;
+  }
+}
+
