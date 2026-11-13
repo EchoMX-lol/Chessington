@@ -18,6 +18,96 @@ let selectedSquare = null;
 let legalMoves = [];
 let lastMove = null;
 
+// Stockfish engine
+let stockfish = null;
+let engineReady = false;
+let engineBusy = false;
+
+function initializeStockfish() {
+  try {
+    stockfish = new Worker("stockfish-19-lite-single.js");
+
+    stockfish.onmessage = function(event) {
+      const message = String(event.data);
+
+      if (message === "uciok") {
+        stockfish.postMessage("isready");
+      }
+
+      if (message === "readyok") {
+        engineReady = true;
+        statusElement.textContent = "White to move";
+        descriptionElement.textContent = "Stockfish is ready.";
+      }
+
+      if (message.startsWith("bestmove")) {
+        engineBusy = false;
+
+        const bestMove = message.split(" ")[1];
+
+        if (
+          bestMove &&
+          bestMove !== "(none)" &&
+          chess.turn() === "b" &&
+          !chess.game_over()
+        ) {
+          const move = chess.move({
+            from: bestMove.substring(0, 2),
+            to: bestMove.substring(2, 4),
+            promotion: bestMove[4] || "q"
+          });
+
+          if (move) {
+            lastMove = {
+              from: move.from,
+              to: move.to
+            };
+
+            updateGame();
+          }
+        }
+      }
+    };
+
+    stockfish.onerror = function(error) {
+      engineReady = false;
+      engineBusy = false;
+
+      statusElement.textContent = "Engine error";
+      descriptionElement.textContent =
+        "Stockfish couldn't load. Check that both engine files are uploaded correctly.";
+
+      console.error("Stockfish error:", error);
+    };
+
+    stockfish.postMessage("uci");
+
+  } catch (error) {
+    console.error("Could not start Stockfish:", error);
+    statusElement.textContent = "Engine unavailable";
+  }
+}
+
+function makeComputerMove() {
+  if (
+    !stockfish ||
+    !engineReady ||
+    engineBusy ||
+    chess.turn() !== "b" ||
+    chess.game_over()
+  ) {
+    return;
+  }
+
+  engineBusy = true;
+
+  statusElement.textContent = "Computer thinking...";
+  descriptionElement.textContent = "Stockfish is calculating its move.";
+
+  stockfish.postMessage("position fen " + chess.fen());
+  stockfish.postMessage("go depth 10");
+}
+
 const pieces = {
   w: {
     k: "♔",
