@@ -316,3 +316,34 @@ modeButtons.forEach(button => {
 updateGame();
 
 
+/* ===== MODE PLACEHOLDER ===== */
+
+.mode-placeholder {
+  flex: 1;
+  min-width: 0;
+  align-self: flex-start;
+  padding: 90px 50px;
+}
+
+.mode-placeholder h1 {
+  margin: 12px 0;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(30px, 4vw, 46px);
+}
+
+.mode-placeholder p:last-child {
+  max-width: 500px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .mode-placeholder {
+    padding: 50px 20px;
+  }
+}
+
