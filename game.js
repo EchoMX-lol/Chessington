@@ -25,16 +25,18 @@ let engineBusy = false;
 
 function initializeStockfish() {
   try {
+    statusElement.textContent = "Loading Stockfish...";
+descriptionElement.textContent = "Initializing computer opponent.";
     stockfish = new Worker("stockfish-19-lite-single.js");
 
     stockfish.onmessage = function(event) {
       const message = String(event.data);
 
-      if (message === "uciok") {
+     if (message.trim() === "uciok") {
         stockfish.postMessage("isready");
       }
 
-      if (message === "readyok") {
+      if (message.trim() === "readyok") {
         engineReady = true;
         statusElement.textContent = "White to move";
         descriptionElement.textContent = "Stockfish is ready.";
