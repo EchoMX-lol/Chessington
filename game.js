@@ -264,8 +264,55 @@ function undoMove() {
   updateGame();
 }
 
+
 newGameButton.addEventListener("click", startNewGame);
 undoButton.addEventListener("click", undoMove);
 
+// ===== GAME MODE NAVIGATION =====
+
+const modeButtons = document.querySelectorAll(".mode-button");
+const gameLayout = document.querySelector(".game-layout");
+const modePlaceholder = document.getElementById("mode-placeholder");
+
+const placeholderEyebrow = document.getElementById("placeholder-eyebrow");
+const placeholderTitle = document.getElementById("placeholder-title");
+const placeholderDescription = document.getElementById("placeholder-description");
+
+function switchMode(mode) {
+  modeButtons.forEach(button => {
+    button.classList.toggle("active", button.dataset.mode === mode);
+  });
+
+  if (mode === "computer") {
+    gameLayout.hidden = false;
+    modePlaceholder.hidden = true;
+    return;
+  }
+
+  gameLayout.hidden = true;
+  modePlaceholder.hidden = false;
+
+  if (mode === "online") {
+    placeholderEyebrow.textContent = "PLAY WITH OTHERS";
+    placeholderTitle.textContent = "Online play is coming.";
+    placeholderDescription.textContent =
+      "We're preparing online matches, private rooms, and the ability to challenge your friends.";
+  }
+
+  if (mode === "practice") {
+    placeholderEyebrow.textContent = "IMPROVE YOUR GAME";
+    placeholderTitle.textContent = "Practice mode.";
+    placeholderDescription.textContent =
+      "A dedicated space for experimenting with positions, learning openings, and improving your chess skills is coming soon.";
+  }
+}
+
+modeButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    switchMode(button.dataset.mode);
+  });
+});
+
 updateGame();
+
 
