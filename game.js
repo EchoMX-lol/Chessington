@@ -189,9 +189,9 @@ function renderBoard() {
 }
 
 function handleSquareClick(squareName) {
-  if (chess.game_over()) {
-    return;
-  }
+  if (chess.game_over() || engineBusy || chess.turn() !== "w") {
+  return;
+}
 
   const piece = chess.get(squareName);
 
@@ -220,10 +220,11 @@ function handleSquareClick(squareName) {
         };
 
         selectedSquare = null;
-        legalMoves = [];
+legalMoves = [];
 
-        updateGame();
-        return;
+updateGame();
+makeComputerMove();
+return;
       }
     }
   }
@@ -404,3 +405,4 @@ modeButtons.forEach(button => {
 });
 
 updateGame();
+initializeStockfish();
